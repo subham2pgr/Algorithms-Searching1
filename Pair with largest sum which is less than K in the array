@@ -1,0 +1,63 @@
+// CPP program to find pair with largest  
+// sum which is less than K in the array 
+#include <bits/stdc++.h> 
+using namespace std; 
+  
+// Function to find pair with largest  
+// sum which is less than K in the array 
+void Max_Sum(int arr[], int n, int k) 
+{ 
+    // To store the break point 
+    int  p = n; 
+      
+    // Sort the given array 
+    sort(arr, arr + n); 
+      
+    // Find the break point 
+    for (int i = 0; i < n; i++) 
+    { 
+         // No need to look beyond i'th index 
+        if (arr[i] >= k) { 
+            p = i; 
+            break; 
+        } 
+    } 
+      
+      
+    int maxsum = 0, a, b; 
+      
+    // Find the required pair 
+    for (int i = 0; i < p; i++)  
+    { 
+        for (int j = i + 1; j < p; j++)  
+        { 
+            if (arr[i] + arr[j] < k and arr[i] + arr[j] >  
+                                                     maxsum) 
+            { 
+                maxsum = arr[i] + arr[j]; 
+                  
+                a = arr[i]; 
+                b = arr[j]; 
+            } 
+        } 
+    } 
+      
+    // Print the required answer 
+    cout << a << " " << b; 
+} 
+  
+// Driver code 
+int main() 
+{ 
+    int arr[] = {5, 20, 110, 100, 10}, k = 85; 
+      
+    int n = sizeof(arr) / sizeof(arr[0]); 
+      
+    // Function call 
+    Max_Sum(arr, n, k); 
+      
+    return 0; 
+} 
+Output:
+10 20
+Time complexity: O(N^2)
